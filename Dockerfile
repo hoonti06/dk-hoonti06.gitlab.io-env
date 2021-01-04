@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN gem install bundler:2.1.2
 
-# install pandoc
+# Upgrade OS 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends apt-utils
@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update && apt-get -qq install zip
 
 
 
-# install node	
+# Install node (for executing generateData.js)
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT
 
@@ -30,7 +30,7 @@ RUN apt-get install -y -qq --no-install-recommends \
 RUN npm install yamljs
 
 
-# install ditaa
+# Install ditaa
 RUN apt-get install -y -qq --no-install-recommends \
 	ditaa
 	
