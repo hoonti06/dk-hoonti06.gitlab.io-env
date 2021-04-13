@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update && apt-get -qq install zip
 
 
 
-# Install node (for executing generateData.js)
+# Install node & yamljs (for executing generateData.js)
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT
 
@@ -27,7 +27,10 @@ RUN apt-get install -y -qq --no-install-recommends \
 	nodejs \
 	yarn
 
+RUN npm init -y
+RUN sed -i '$s/}/,\n"private":"true"}/' package.json
 RUN npm install yamljs
+
 
 
 # Install ditaa
