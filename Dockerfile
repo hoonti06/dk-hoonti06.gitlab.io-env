@@ -5,7 +5,7 @@ MAINTAINER hoonti06 <hoonti06@gmail.com>
 ENV LANG C.UTF-8
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN gem install bundler:2.1.2
+RUN gem install bundler
 
 # Upgrade OS 
 ARG DEBIAN_FRONTEND=noninteractive
